@@ -30,21 +30,32 @@
 	</div>
 	<script type="text/javascript">(function(){
 		"use strict";
-		
-		// detectLull parameters (for simplicity sake)
-		var onLull =  function(){document.getElementById("status").className='donald';};
-		var delay = 500;
-
 		/* 
 		 * The detectLull function is an event callback that execute the onLull function on user lull.
 		 * A lull is defined by a period of "delay" ms without any user actions.
 		 * The detectLull function is called on every user action and must call the callback only after "delay" ms of inactivity.
+		 *
+		 * Exemple: 
+		 * <----> : Lull delay
+		 * k : Keystroke
+		 * L : Call to onLull
+		 * 
+		 *    k      L   k   k k       L
+		 * ---------------------------------> Timeline
+		 *     <---->     <---<-<---->         
+		 * 
+		 * In this challenge, a callback on each keystroke makes Donald walk, 
+		 * the onLull function stops him. The challenge is to fill the function 
+		 * that detects a lull and call the onLull function.
 		 */
+ 		var onLull =  function(){document.getElementById("status").className='donald';};
+		var delay = 500;
+
 		var detectLull = function () {
 			alert("Take a look at the source code please :3");
 			// here, write some code to call callback only in case of lull
 			onLull.call(this);
-		};			
+		};
 
 		// get the input element
 		var el = document.getElementById("search");
